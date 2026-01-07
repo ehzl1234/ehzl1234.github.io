@@ -1,404 +1,983 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Firdaus | Data Analyst & ML Engineer</title>
+    <meta name="description" content="Portfolio of Muhammad Firdaus - Data Analyst, ML Engineer, and Senior QC Lab Technician with 10+ years of experience">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --background-color: #f8f9fa;
-            --text-color: #2c3e50;
-            --border-color: #e9ecef;
-            --hover-color: #f1f5f9;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #14b8a6;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.8;
-            color: var(--text-color);
-            background: linear-gradient(135deg, #f6f8fa 0%, #f1f5f9 100%);
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            margin-bottom: 60px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            transform: skewY(-5deg);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            position: relative;
-        }
-
-        header p {
-            margin: 20px 0 0;
-            font-size: 1.4em;
-            opacity: 0.9;
-            position: relative;
-        }
-
-        section {
-            margin: 60px 0;
-            padding: 40px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            font-size: 2em;
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary-color);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        section:hover h2::after {
-            width: 100px;
-        }
-
-        .project {
-            margin: 30px 0;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--secondary-color);
-            border-radius: 2px;
-            transition: height 0.3s ease;
-        }
-
-        .project:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .project:hover::before {
+            width: 100%;
             height: 100%;
+            z-index: -1;
+            background: var(--dark);
         }
 
-        .project h3 {
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 1.4em;
-        }
-
-        ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-
-        ul li {
-            margin: 15px 0;
-            line-height: 1.7;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .skill-category {
-            background: var(--hover-color);
-            padding: 25px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-category h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            margin-top: 80px;
-            background: var(--primary-color);
-            color: white;
-            position: relative;
-        }
-
-        footer::before {
+        .bg-animation::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite alternate;
         }
 
-        a {
-            color: var(--secondary-color);
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        a::after {
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary-color);
+            background: var(--gradient);
             transition: width 0.3s ease;
         }
 
-        a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 60px 20px;
-            }
-            
-            header h1 {
-                font-size: 2.2em;
-            }
-            
-            section {
-                padding: 25px;
-                margin: 40px 0;
-            }
-            
-            .project {
-                padding: 20px;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+            position: relative;
         }
 
-        /* Animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.6s ease forwards;
+        .hero-content {
+            max-width: 900px;
         }
 
-        @keyframes fadeIn {
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .slide-in {
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn 0.6s ease forwards;
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease 0.8s both;
         }
 
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        .project-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: var(--card-bg);
+            padding: 0.75rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .featured-project .project-image {
+            height: 100%;
+            min-height: 300px;
+            border-radius: 20px;
+        }
+
+        .featured-project .project-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--gradient-2);
+            color: var(--dark);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            padding: 0.25rem 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--gradient);
+            border-radius: 50%;
+            border: 3px solid var(--dark);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--gray);
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+        }
+
+        .timeline-content li {
+            color: var(--gray);
+            font-size: 0.9rem;
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                gap: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.75rem;
+            }
+
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-    <header>
-        <h1>Muhammad Firdaus bin Abi Bakris</h1>
-        <p>Senior Laboratory Technician | Chemical Analysis Specialist | Quality Control Expert</p>
-    </header>
+    <div class="bg-animation"></div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>With over 10 years of experience as a Senior QC Lab Technician at Singapore Refining Co., I am passionate about ensuring the quality and consistency of petroleum products, refinery intermediates, and water samples. I perform rigorous QC testing using various analytical techniques, such as Gas Chromatography, NSX-2100, and HPLC, to measure and monitor the chemical and physical properties of different materials and gases.</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Firdaus</div>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔬 From Lab to Data</div>
+            <h1>Hi, I'm <span>Firdaus</span></h1>
+            <p>Senior QC Lab Supervisor turned Data Analyst & ML Engineer. Leveraging 10+ years of petroleum industry expertise to build data-driven solutions.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="https://github.com/ehzl1234" class="btn btn-secondary" target="_blank">GitHub Profile</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">ML Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2>Featured <span>Projects</span></h2>
+            <p>Domain-specific machine learning projects leveraging my petroleum industry expertise</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Featured Project -->
+            <div class="project-card featured-project reveal">
+                <div class="project-image" style="background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);">
+                    <div class="project-overlay"></div>
+                    <div class="project-icon">🏭</div>
+                </div>
+                <div class="project-content">
+                    <div class="featured-badge">⭐ Featured</div>
+                    <h3>Refinery Asset Anomaly Detection</h3>
+                    <p>Real-time equipment monitoring using Isolation Forest ML to detect temperature spikes, pressure drops, flow blockages, and vibration anomalies before they cause costly downtime.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Scikit-Learn</span>
+                        <span class="project-tag">Streamlit</span>
+                        <span class="project-tag">Isolation Forest</span>
+                        <span class="project-tag">Time Series</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ehzl1234/refinery-anomaly-detection" class="project-link" target="_blank">📂 View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card reveal">
+                <div class="project-image" style="background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%);">
+                    <div class="project-overlay"></div>
+                    <div class="project-icon">⚗️</div>
+                </div>
+                <div class="project-content">
+                    <h3>Octane Number Predictor</h3>
+                    <p>XGBoost regression model predicting Research Octane Number from Gas Chromatography analysis with SHAP explainability.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">XGBoost</span>
+                        <span class="project-tag">SHAP</span>
+                        <span class="project-tag">Streamlit</span>
+                        <span class="project-tag">Chemistry</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ehzl1234/chemical-property-predictor" class="project-link" target="_blank">📂 View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card reveal">
+                <div class="project-image" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
+                    <div class="project-overlay"></div>
+                    <div class="project-icon">🔮</div>
+                </div>
+                <div class="project-content">
+                    <h3>Customer Churn Prediction</h3>
+                    <p>End-to-end ML system with FastAPI REST endpoint and Streamlit dashboard for predicting telecom customer churn.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">Scikit-Learn</span>
+                        <span class="project-tag">XGBoost</span>
+                        <span class="project-tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ehzl1234/churn-prediction-system" class="project-link" target="_blank">📂 View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card reveal">
+                <div class="project-image" style="background: linear-gradient(135deg, #9b59b6 0%, #e91e63 100%);">
+                    <div class="project-overlay"></div>
+                    <div class="project-icon">📊</div>
+                </div>
+                <div class="project-content">
+                    <h3>Data Analysis Portfolio</h3>
+                    <p>Collection of data analysis projects using pandas, matplotlib, and exploratory data analysis techniques.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Pandas</span>
+                        <span class="project-tag">Matplotlib</span>
+                        <span class="project-tag">Jupyter</span>
+                        <span class="project-tag">EDA</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ehzl1234/data-portfolio" class="project-link" target="_blank">📂 View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical <span>Skills</span></h2>
+            <p>A blend of laboratory expertise and modern data science capabilities</p>
+        </div>
+
+        <div class="skills-container">
+            <div class="skill-card reveal">
+                <div class="skill-icon">🐍</div>
+                <h3>Data Science & ML</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Pandas</span>
+                    <span class="skill-item">Scikit-Learn</span>
+                    <span class="skill-item">XGBoost</span>
+                    <span class="skill-item">SHAP</span>
+                    <span class="skill-item">NumPy</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">📈</div>
+                <h3>Visualization</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Matplotlib</span>
+                    <span class="skill-item">Plotly</span>
+                    <span class="skill-item">Seaborn</span>
+                    <span class="skill-item">Streamlit</span>
+                    <span class="skill-item">Dashboards</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔌</div>
+                <h3>APIs & Deployment</h3>
+                <div class="skill-list">
+                    <span class="skill-item">FastAPI</span>
+                    <span class="skill-item">REST APIs</span>
+                    <span class="skill-item">Git/GitHub</span>
+                    <span class="skill-item">Docker</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔬</div>
+                <h3>Domain Expertise</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Gas Chromatography</span>
+                    <span class="skill-item">HPLC</span>
+                    <span class="skill-item">ASTM/ISO Standards</span>
+                    <span class="skill-item">Quality Control</span>
+                    <span class="skill-item">ISO 17025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
     <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="project">
-            <h3>Senior QC Lab Technician at Singapore Refining Co. (Sept 2013 - Present)</h3>
-            <ul>
-                <li>Perform rigorous QC testing on petroleum products, refinery intermediate, process, and effluent water</li>
-                <li>Conduct risk assessments with supervisors to ensure sampling point safety</li>
-                <li>Sample and analyze plant gases and LPG gases using Gas Chromatography</li>
-                <li>Chemical preparation and standardization of solvents</li>
-                <li>Maintain lab equipment and ensure ISO compliance</li>
-                <li>Manage stock-taking and reordering of lab consumables</li>
-                <li>Lead teams in quality control and assurance work</li>
-                <li>Develop and manage Standard Operating Procedures (SOPs)</li>
-            </ul>
+        <div class="section-header">
+            <h2>Professional <span>Experience</span></h2>
+            <p>10+ years in petroleum quality control and laboratory management</p>
         </div>
 
-        <div class="project">
-            <h3>National Serviceman at Singapore Police Force (2011 - 2013)</h3>
-            <p>Served as a National Serviceman, playing a key role in improving public safety and reducing crime. Responsibilities included assisting with local patrols, investigating criminal offenses, and leading preliminary inquiries and investigations.</p>
-        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Dec 2024 - Present</div>
+                    <h3>QC Laboratory Supervisor</h3>
+                    <h4>Singapore Refining Company Pte Ltd</h4>
+                    <ul>
+                        <li>Lead laboratory technicians in ISO 9001, ISO 45001, and ISO 17025 compliance</li>
+                        <li>Certify final results for petroleum products before cargo release</li>
+                        <li>Drive continuous improvement and workflow optimization</li>
+                        <li>Conduct risk assessments with HSSE departments</li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="project">
-            <h3>Research Intern at Temasek Polytechnic (2011 - 2012)</h3>
-            <p>Collaborated on microbiological research projects including biofilm formation and HPLC detection of Emodin and Chrysophanol in herbal oil. Used spectrophotometer and fluorescent microscope for research and analysis.</p>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Sep 2013 - Nov 2024</div>
+                    <h3>Senior QC Lab Technician</h3>
+                    <h4>Singapore Refining Company Pte Ltd</h4>
+                    <ul>
+                        <li>Conducted quality control testing using Gas Chromatography and HPLC</li>
+                        <li>Developed and maintained ISO-compliant SOPs</li>
+                        <li>Managed laboratory inventory and equipment maintenance</li>
+                        <li>Supported internal and external audits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2021 - Present</div>
+                    <h3>Union Representative</h3>
+                    <h4>Laboratory Department</h4>
+                    <ul>
+                        <li>Represent laboratory staff in union discussions and workplace policy</li>
+                        <li>Collaborate with HR to promote fair labor practices</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="project">
-            <h3>Singapore University of Social Sciences (SUSS) (2023 - Present)</h3>
-            <p>Bachelor's in Sociology</p>
-            <ul>
-                <li>Building critical thinking and data analysis capabilities</li>
-                <li>Focusing on globalization's impact on Singapore</li>
-                <li>Conducting research projects on urban challenges</li>
-            </ul>
-        </div>
-
-        <div class="project">
-            <h3>Aston University (2014 - 2016)</h3>
-            <p>Bachelor's Degree in Medical Biosciences</p>
-            <ul>
-                <li>Studied human health, disease, and biomedical science applications</li>
-                <li>Developed understanding of physiological processes and disease mechanisms</li>
-                <li>Gained practical experience through research projects</li>
-            </ul>
-        </div>
-
-        <div class="project">
-            <h3>Temasek Polytechnic (2011 - 2013)</h3>
-            <p>Diploma in Pharmaceutical Science Technology</p>
-            <ul>
-                <li>Studied Biochemistry, Organic Chemistry, and Physical Chemistry</li>
-                <li>Trained in bioprocess technology and pharmaceutical analysis</li>
-                <li>Completed major project and internship program</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="skills-certifications">
-        <h2>Skills & Certifications</h2>
-        
-        <div class="project">
-            <h3>Technical Skills</h3>
-            <ul>
-                <li>Quality Control and Assurance</li>
-                <li>Chemical Testing</li>
-                <li>Gas Chromatography</li>
-                <li>HPLC Analysis</li>
-                <li>Laboratory Equipment Maintenance</li>
-            </ul>
-        </div>
-        
-        <div class="project">
-            <h3>Digital Skills</h3>
-            <ul>
-                <li>Microsoft Office Suite (Word, Excel, PowerPoint)</li>
-                <li>Python Programming</li>
-                <li>HTML & CSS</li>
-                <li>WordPress</li>
-                <li>Cybersecurity Fundamentals</li>
-            </ul>
-        </div>
-
-        <div class="project">
-            <h3>Certifications</h3>
-            <ul>
-                <li>ISO17025</li>
-                <li>WSQ in Supervise Workplace Safety and Health in Process Plant</li>
-                <li>WSQ in Perform Work at Height</li>
-                <li>Class 3 driving license</li>
-                <li>Challenge of Wits 2023 - Challenge 2 (Ministry of Defence of Singapore)</li>
-            </ul>
-        </div>
-    </section>
-
+    <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: Firdaus.bakris@gmail.com</p>
-        <p>GitHub: <a href="https://github.com/ehzl1234">github.com/ehzl1234</a></p>
+        <div class="section-header">
+            <h2>Get In <span>Touch</span></h2>
+            <p>Open to collaboration on data science and analytics projects</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card reveal">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:firdaus.bakris@gmail.com">firdaus.bakris@gmail.com</a>
+            </div>
+
+            <div class="contact-card reveal">
+                <div class="contact-icon">💻</div>
+                <h3>GitHub</h3>
+                <a href="https://github.com/ehzl1234" target="_blank">github.com/ehzl1234</a>
+            </div>
+
+            <div class="contact-card reveal">
+                <div class="contact-icon">📍</div>
+                <h3>Location</h3>
+                <p>Singapore</p>
+            </div>
+        </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Muhammad Firdaus bin Abi Bakris. All rights reserved.</p>
+        <p>© 2025 Muhammad Firdaus Abi Bakris. Built with ❤️ and lots of ☕</p>
+        <p style="margin-top: 0.5rem;">View source on <a href="https://github.com/ehzl1234/ehzl1234.github.io" target="_blank">GitHub</a></p>
     </footer>
-    </div>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Reveal on scroll animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+        });
+
+        // Typing animation for stats (optional enhancement)
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerHTML = Math.floor(progress * (end - start) + start) + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
 </body>
 </html>
